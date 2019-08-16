@@ -50,7 +50,6 @@ install_vs_code() {
             mkdir $DIR_WORKSPACE
     fi 
     tar -zxvf $FILE_PATH -C $DIR_WORKSPACE
-    wget -O $DIR_WORKSPACE"/VScode.png" https://klauslaube.com.br/images/blog/vscode-logo.png
     rm $FILE_PATH
 }
 
@@ -72,7 +71,6 @@ install_docker() {
 }
 
 install_pulse() {
-
     sudo apt-get install libwebkitgtk-1.0-0 -y
     sudo apt-get install libproxy1-plugin-webkit -y
     sudo apt-get install libgnome-keyring0 -y
@@ -99,8 +97,17 @@ install_postman() {
             mkdir $DIR_WORKSPACE
     fi 
     tar -zxvf $FILE_PATH -C $DIR_WORKSPACE
-    wget -O $DIR_WORKSPACE"/postman.png" https://miro.medium.com/max/630/1*fVBL9mtLJmHIH6YpU7WvHQ.png
     rm $FILE_PATH
+}
+
+donwload_icons() {
+
+    DIR_WORKSPACE=$HOME/workspace/icons
+    if [ ! -d $DIR_WORKSPACE ]; then
+            mkdir $DIR_WORKSPACE
+    fi 
+    wget -O $DIR_WORKSPACE"/VScode.png" https://klauslaube.com.br/images/blog/vscode-logo.png
+    wget -O $DIR_WORKSPACE"/postman.png" https://miro.medium.com/max/630/1*fVBL9mtLJmHIH6YpU7WvHQ.png
 }
 
 run() {
@@ -125,11 +132,13 @@ run() {
     install_gradle
     install_jdk8
     install_postman
+    donwload_icons
 }
 
 run
 if [ $? -eq 0 ]; then
 echo 'Instalação finalizada com sucesso 8)'
+echo 'User o bash: ( gnome-desktop-item-edit ~/Desktop/ --create-new ) para criar atalhos ao software como as IDEs :P'
 else
 echo 'Ocorreu erros durantes as instalações, verifique ai brother!'
 fi
