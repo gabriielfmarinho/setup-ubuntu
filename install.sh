@@ -90,8 +90,8 @@ install_jdk8() {
 }
 
 install_postman() {
-    FILE_PATH=$HOME/Downloads/postman.tar.gz
-     DIR_WORKSPACE=$HOME/tools
+    local FILE_PATH=$HOME/Downloads/postman.tar.gz
+    local DIR_WORKSPACE=$HOME/tools
     wget -O $FILE_PATH https://dl.pstmn.io/download/latest/linux64
     if [ ! -d $DIR_WORKSPACE ]; then
             mkdir $DIR_WORKSPACE
@@ -102,7 +102,7 @@ install_postman() {
 
 donwload_icons() {
 
-    DIR_WORKSPACE=$HOME/workspace/icons
+    local DIR_WORKSPACE=$HOME/workspace/icons
     if [ ! -d $DIR_WORKSPACE ]; then
             mkdir $DIR_WORKSPACE
     fi 
