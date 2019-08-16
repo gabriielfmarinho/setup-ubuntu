@@ -110,6 +110,13 @@ donwload_icons() {
     wget -O $DIR_WORKSPACE"/postman.png" https://miro.medium.com/max/630/1*fVBL9mtLJmHIH6YpU7WvHQ.png
 }
 
+config_keyboard() {
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['']"
+}
+
 run() {
 
     echo "--"
@@ -132,6 +139,7 @@ run() {
     install_gradle
     install_jdk8
     install_postman
+    config_keyboard
     donwload_icons
 }
 
