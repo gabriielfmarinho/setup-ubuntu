@@ -1,0 +1,11 @@
+[http]
+	sslVerify = false
+[push]
+	default = simple
+[user]
+	name = gferreira
+	email = gabriiel.fmarinho@gmail.com
+[core]
+	autocrlf = input
+[credential]
+	helper = cache --timeout=36000
