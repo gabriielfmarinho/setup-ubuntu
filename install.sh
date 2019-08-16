@@ -35,7 +35,7 @@ install_git() {
     cp ./configuration-files/gitconfig ~/.gitconfig
 }
 
-install_jdk() {
+install_jdk11() {
     sudo apt install openjdk-11-jdk
 }
 
@@ -75,6 +75,7 @@ run() {
     install_slack
     install_gnome
     install_git
+    install_jdk11
     install_node
     install_vs_code
     install_intellij
