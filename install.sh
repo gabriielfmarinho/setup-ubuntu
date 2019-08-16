@@ -1,14 +1,12 @@
 #!/bin/bash
 
 system_update() {
-    sudo apt update
-    sudo apt upgrade 
+    sudo apt update -y
+    sudo apt upgrade -y
 }
 
 install_spotify() {
-    curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
-    echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-    sudo apt-get update && sudo apt-get instalar spotify-client
+    sudo snap install spotify
 }
 
 install_chrome() {
@@ -20,10 +18,10 @@ install_chrome() {
 }
 
 install_slack() {
-    local DIR_DOWNLOADS=$HOME/Downloads/slack.deb
-    wget -O $DIR_DOWNLOADS https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.1-amd64.deb
-    sudo dpkg -i $DIR_DOWNLOADS 
-    rm $DIR_DOWNLOADS
+    local FILE_PATH=$HOME/Downloads/slack.deb
+    wget -O $FILE_PATH https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.1-amd64.deb
+    sudo dpkg -i $FILE_PATH 
+    rm $FILE_PATH
     sudo apt install -y -f
 }
 
@@ -44,32 +42,74 @@ install_node() {
     sudo n stable
 }
 
-install_vs_code(){
-    local DIR_DOWNLOADS=$HOME/Downloads/vs-code.tar.gz
-    local DIR_WORKSPACE=$HOME/tetspoaposap
-    wget -O $DIR_DOWNLOADS https://go.microsoft.com/fwlink/?LinkID=620884
+install_vs_code() {
+    local FILE_PATH=$HOME/Downloads/vs-code.tar.gz
+    local DIR_WORKSPACE=$HOME/tools
+    wget -O $FILE_PATH https://go.microsoft.com/fwlink/?LinkID=620884
     if [ ! -d $DIR_WORKSPACE ]; then
             mkdir $DIR_WORKSPACE
     fi 
-    tar -zxvf $DIR_DOWNLOADS -C $DIR_WORKSPACE
+    tar -zxvf $FILE_PATH -C $DIR_WORKSPACE
+    wget -O $DIR_WORKSPACE"/VScode.png" https://klauslaube.com.br/images/blog/vscode-logo.png
+    rm $FILE_PATH
 }
 
 install_intellij() {
-    local DIR_DOWNLOADS=$HOME/Downloads/idea.tar.gz
+    local FILE_PATH=$HOME/Downloads/idea.tar.gz
     local DIR_WORKSPACE=$HOME/tools
-    wget -O $DIR_DOWNLOADS https://download.jetbrains.com/idea/ideaIU-2019.2.tar.gz?_ga=2.90660698.1132001915.1565906577-390554571.1563971476
+    wget -O $FILE_PATH https://download-cf.jetbrains.com/idea/ideaIC-2019.2.tar.gz
     if [ ! -d $DIR_WORKSPACE ]; then
             mkdir $DIR_WORKSPACE
     fi 
-    tar -zxvf $DIR_DOWNLOADS -C $DIR_WORKSPACE
+    tar -zxvf $FILE_PATH -C $DIR_WORKSPACE
+    rm $FILE_PATH
 }
 
 install_docker() {
-    curl -sSL get.docker.io | sh
+    sudo apt install docker -y
+    sudo apt install docker-compose -y
     sudo usermod -aG docker $USER
 }
 
+install_pulse() {
+
+    sudo apt-get install libwebkitgtk-1.0-0 -y
+    sudo apt-get install libproxy1-plugin-webkit -y
+    sudo apt-get install libgnome-keyring0 -y
+    local FILE_PATH=$HOME/Downloads/pulse.deb
+    local DIR_WORKSPACE=$HOME/tools
+    wget -O $FILE_PATH http://trial.pulsesecure.net/clients/ps-pulse-linux-9.0r4.0-b943-ubuntu-debian-64-bit-installer.deb
+    sudo dpkg -i $FILE_PATH 
+    rm $FILE_PATH
+}
+
+install_gradle() {
+    sudo apt install gradle -y
+}
+
+install_jdk8() {
+    sudo apt install openjdk-8-jdk -y
+}
+
+install_postman() {
+    FILE_PATH=$HOME/Downloads/postman.tar.gz
+     DIR_WORKSPACE=$HOME/tools
+    wget -O $FILE_PATH https://dl.pstmn.io/download/latest/linux64
+    if [ ! -d $DIR_WORKSPACE ]; then
+            mkdir $DIR_WORKSPACE
+    fi 
+    tar -zxvf $FILE_PATH -C $DIR_WORKSPACE
+    wget -O $DIR_WORKSPACE"/postman.png" https://miro.medium.com/max/630/1*fVBL9mtLJmHIH6YpU7WvHQ.png
+    rm $FILE_PATH
+}
+
 run() {
+
+    echo "--"
+    echo "BUSQUE UM CAFÉ BROTHER, ISTO PODE DEMORAR BASTANTE !! :p "
+    echo "--"
+    sleep 8s
+
     system_update
     install_chrome
     install_slack
@@ -81,11 +121,15 @@ run() {
     install_intellij
     install_spotify
     install_docker
+    install_pulse
+    install_gradle
+    install_jdk8
+    install_postman
 }
 
 run
 if [ $? -eq 0 ]; then
-echo 'Instalação finalizada com sucesso!'
+echo 'Instalação finalizada com sucesso 8)'
 else
-echo 'Ocorreu erros durantes as instalações, verifique!'
+echo 'Ocorreu erros durantes as instalações, verifique ai brother!'
 fi
