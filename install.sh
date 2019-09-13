@@ -42,6 +42,10 @@ install_node() {
     sudo n stable
 }
 
+install_npm() {
+    sudo apt install npm -y 
+}
+
 install_vs_code() {
     local FILE_PATH=$HOME/Downloads/vs-code.tar.gz
     local DIR_WORKSPACE=$HOME/tools
@@ -139,6 +143,7 @@ run() {
     install_gradle
     install_jdk8
     install_postman
+    install_npm
     config_keyboard
     donwload_icons
 }
