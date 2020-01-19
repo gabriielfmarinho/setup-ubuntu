@@ -114,28 +114,6 @@ donwload_icons() {
     wget -O $DIR_WORKSPACE"/postman.png" https://miro.medium.com/max/630/1*fVBL9mtLJmHIH6YpU7WvHQ.png
 }
 
-install_zsh() {
-
-    # install zsh
-    sudo apt install zsh
-
-    # install oh my zsh
-    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-    # install zsh plugins
-    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-
-    # write file .zshrc 
-    cp ./configuration-files/zshrc ~/.zshrc
-
-    #install dracula theme
-    sudo apt-get install dconf-cli
-
-    git clone https://github.com/dracula/gnome-terminal && cd gnome-terminal && sudo ./install.sh
-    
-    rm -rf ~/gnome-terminal
-}
-
 config_keyboard() {
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['']"
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['']"
