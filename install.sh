@@ -114,26 +114,26 @@ donwload_icons() {
     wget -O $DIR_WORKSPACE"/postman.png" https://miro.medium.com/max/630/1*fVBL9mtLJmHIH6YpU7WvHQ.png
 }
 
-config_zsh() {
+install_zsh() {
+
     # install zsh
     sudo apt install zsh
+
+    # install oh my zsh
     sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
     # install zsh plugins
     sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
 
-    # write to file .zshrc 
-
-#     zplugin light zdharma/fast-syntax-highlighting
-# zplugin light zsh-users/zsh-autosuggestions
-# zplugin light zsh-users/zsh-completions
+    # write file .zshrc 
+    cp ./configuration-files/zshrc ~/.zshrc
 
     #install dracula theme
     sudo apt-get install dconf-cli
-    git clone https://github.com/dracula/gnome-terminal 
-    cd gnome-terminal
-    sudo ./install.sh
-}
+
+    git clone https://github.com/dracula/gnome-terminal && cd gnome-terminal && sudo ./install.sh
+    
+    rm -rf ~/gnome-terminal
 }
 
 config_keyboard() {
@@ -168,6 +168,7 @@ run() {
     install_npm
     config_keyboard
     donwload_icons
+    install_zsh
 }
 
 run
