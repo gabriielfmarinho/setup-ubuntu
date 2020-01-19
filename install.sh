@@ -168,7 +168,6 @@ run() {
     install_npm
     config_keyboard
     donwload_icons
-    install_zsh
 }
 
 run
