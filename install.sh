@@ -24,7 +24,7 @@ install_slack() {
 }
 
 install_gnome() {
-    sudo apt-get install --no-install-recommends gnome-panel
+    sudo apt-get install --no-install-recommends gnome-panel -y 
 }
 
 install_git() {
