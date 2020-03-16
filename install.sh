@@ -96,7 +96,11 @@ install_postman() {
 
 install_toolbox() {
     wget -O $HOME/Downloads/toolbox.tar.gz https://download-cf.jetbrains.com/toolbox/jetbrains-toolbox-1.16.6319.tar.gz
-    tar -xzf $HOME/Downloads/toolbox.tar.gz -C $HOME/tools
+    local FILE_PATH=$HOME/tools
+    if [ ! -d $FILE_PATH ]; then
+        mkdir $FILE_PATH
+    fi 
+    tar -xzf $HOME/tools/toolbox.tar.gz -C $HOME/tools
     rm $HOME/Downloads/toolbox.tar.gz
 }
 
