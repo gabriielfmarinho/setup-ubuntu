@@ -120,21 +120,13 @@ config_keyboard() {
 }
 
 install_zsh() {
+    sudo apt install zsh -y
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+    git clone https://github.com/dracula/gnome-terminal ~/gnome-terminal && ~/gnome-terminal/install.sh
     cp ./configuration-files/zshrc ~/.zshrc
-}
-
-install_dracula_theme() {
-    git clone https://github.com/dracula/gnome-terminal
-    local DIR_TOOLS=$HOME/workspace
-    if [ ! -d $DIR_TOOLS ]; then
-            mkdir $DIR_TOOLS
-    fi 
-    mv gnome-terminal $HOME/workspace
-    sudo bash $HOME/workspace/gnome-terminal/install.sh -y
 }
 
 run() {
@@ -146,7 +138,6 @@ run() {
 
     system_update
     install_zsh
-    install_dracula_theme
     install_toolbox
     install_chrome
     install_slack
