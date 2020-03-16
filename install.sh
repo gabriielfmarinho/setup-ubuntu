@@ -120,7 +120,7 @@ install_zsh() {
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-    cp ./files/zshrc ~/.zshrc
+    cp ./configuration-files/zshrc ~/.zshrc
 }
 
 install_dracula_theme() {
