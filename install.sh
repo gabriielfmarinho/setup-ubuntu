@@ -99,8 +99,8 @@ install_toolbox() {
     local FILE_PATH=$HOME/tools
     if [ ! -d $FILE_PATH ]; then
         mkdir $FILE_PATH
-    fi 
-    tar -xzf $HOME/tools/toolbox.tar.gz -C $HOME/tools
+    fi
+    sudo tar -xzf $HOME/Downloads/toolbox.tar.gz -C $HOME/tools
     rm $HOME/Downloads/toolbox.tar.gz
 }
 
