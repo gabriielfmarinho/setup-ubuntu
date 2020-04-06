@@ -129,6 +129,10 @@ install_zsh() {
     cp ./configuration-files/zshrc ~/.zshrc
 }
 
+install_curl() {
+    sudo apt install curl -y
+}
+
 run() {
 
     echo "--"
@@ -137,7 +141,7 @@ run() {
     sleep 8s
 
     system_update
-    install_zsh
+    install_curl
     install_toolbox
     install_chrome
     install_slack
@@ -157,6 +161,7 @@ run() {
     install_npm
     config_keyboard
     donwload_icons
+    install_zsh
 }
 
 run
