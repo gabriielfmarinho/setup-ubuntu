@@ -58,8 +58,8 @@ install_pulse() {
     sudo apt-get install libproxy1-plugin-webkit -y
     sudo apt-get install libgnome-keyring0 -y
     local FILE_PATH=$HOME/Downloads/pulse.deb
-    local DIR_WORKSPACE=$HOME/tools
-    wget -O $FILE_PATH http://trial.pulsesecure.net/clients/ps-pulse-linux-9.0r4.0-b943-ubuntu-debian-64-bit-installer.deb
+    local DIR_WORKSPACE=$HOME/tools    
+    wget -O $FILE_PATH http://trial.pulsesecure.net/clients/ps-pulse-linux-9.1r5.0-b151-ubuntu-debian-64-bit-installer.deb?mkt_tok=eyJpIjoiWldJMU16aGxOamxrWlRJdyIsInQiOiJabUVKVlZyVVlHRXJ2Zlwvb3dJbGJMQWR3YTRvNnJnOVd0bTF2N3ZrMXlBMG5QN0daT2pSV1F3ZWVQb1hOVUdEZlY3ZTRMQTBITCtuQmlNeDVqTGhNSEF6TDJBSUJLbmdiblA1OGo1b3MzOTdYSVpmZEhSNlwvRmFVYjg1WGJ2UDhiIn0%3D
     sudo dpkg -i $FILE_PATH 
     rm $FILE_PATH
 }
